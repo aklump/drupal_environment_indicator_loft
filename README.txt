@@ -45,7 +45,6 @@ Contact The Developer
    sourcecode@intheloftstudios.com
    360.690.6432
    PO Box 29294 Bellingham, WA 98228-1294
-   skype: intheloftstudios
 
    [6]http://www.intheloftstudios.com
    [7]https://github.com/aklump
