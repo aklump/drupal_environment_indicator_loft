@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Default theme implementation of an environment indicator element.
+ *
+ * Available variables:
+ * - title: The name of the environment.
+ * - description: Additional information to be shown.
+ * - attributes: HTML attributes for the environment indicator.
+ *
+ * @see template_preprocess_datetime_form()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('environment-indicator') }}>
+  <a class="js-environment-indicator__hide" href="#">
+    <span class="environment-indicator__title"{{ color }}>{{ title }}{% if
+        description %}: {{ description }}{% endif %}</span>
+  </a>
+  <div class="environment-indicator__n"{{ color }}></div>
+  <div class="environment-indicator__e"{{ color }}></div>
+  <div class="environment-indicator__s"{{ color }}></div>
+  <div class="environment-indicator__w"{{ color }}></div>
+</div{{ attributes }}>
