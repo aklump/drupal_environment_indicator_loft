@@ -1,29 +1,13 @@
-// Remote
-
-// Color: staging
-$staging: #0f0;
-$text_on_staging: #000;
-
-// Color: staging.gitflow-feature*
-$staging_feature: #ff7f00;
-$text_on_staging_feature: #000;
-
-// Local
-
-// Color: dev.gitflow-master
-$dev_master: #f0f;
-$text_on_dev_master: #fff;
-
-// Color: dev.gitflow-develop
-$dev_develop: #0ff;
-$text_on_dev_develop: #000;
-
-// Color: dev.gitflow-feature*
-$dev_feature: #ffff0a;
-$text_on_dev_feature: #000;
-
 $border_width: 12px;
 $offset: $border_width / -2;
+
+.environment-indicator {
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 998; //admin menu is 999
+}
 
 .environment-indicator__title {
   position: fixed;
@@ -80,52 +64,4 @@ $offset: $border_width / -2;
   left: $offset;
   top: 0;
   width: $border_width;
-}
-
-/**
- * Borders & Colors
- */
-@mixin borders-colors($color, $text_color) {
-  .environment-indicator__n,
-  .environment-indicator__e,
-  .environment-indicator__s,
-  .environment-indicator__w {
-    background-color: $color;
-  }
-  .environment-indicator__title {
-    background-color: $color;
-    color: $text_color;
-  }
-}
-
-.environment-indicator {
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 998; //admin menu is 999
-  @include borders_colors(#fff, #000);
-
-  // Never shown on prod.
-  &.prod {
-    display: none;
-  }
-
-  // Colorize based on role/git branch.
-  &.staging {
-    @include borders_colors($staging, $text_on_staging);
-  }
-  &.staging.gitflow-feature {
-    @include borders_colors($staging_feature, $text_on_staging_feature);
-  }
-  &.dev.gitflow-master {
-    @include borders_colors($dev_master, $text_on_dev_master);
-  }
-  &.dev,
-  &.dev.gitflow-develop {
-    @include borders_colors($dev_develop, $text_on_dev_develop);
-  }
-  &.dev.gitflow-feature {
-    @include borders_colors($dev_feature, $text_on_dev_feature);
-  }
 }
