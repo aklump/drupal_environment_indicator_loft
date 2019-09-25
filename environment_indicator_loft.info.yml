@@ -1,6 +1,6 @@
-name: 'Environment Indicator Loft'
-description: 'Alters the visual to emulate the deprecated Loft Deploy module.'
-package: 'In the Loft Studios'
+name: 'Environment Indicator Loft UX'
+description: 'An alternative indicator UX by In the Loft Studios.'
+package: 'Development'
 type: module
 core: 8.x
 version: 8.x-1.0.1
