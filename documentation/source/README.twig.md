@@ -1,4 +1,4 @@
-# Environment Indicator Loft Drupal Module
+# Environment Indicator Loft UX, a Drupal Module
 
 {% include('_overview.md') %}
 
