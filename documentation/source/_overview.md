@@ -2,7 +2,7 @@
 
 ## Summary
 
-This is an alternative UX for the Drupal module  [Environment Indicator](https://www.drupal.org/project/environment_indicator) by [In the Loft Studios](http://intheloftstudios.com).  It removes the color in the Admin toolbar, and wraps the entire screen in a faint edge glow.  It provides the GIT branch in the description.  It allows hiding the indicator by clicking or double clicking the title/description area.
+This is an alternative UX by [In the Loft Studios](http://intheloftstudios.com) for the well known Drupal module [Environment Indicator](https://www.drupal.org/project/environment_indicator).  It removes the color from the admin toolbar, and wraps the entire screen in a faint edge glow.  It provides the GIT branch in the description.  It allows hiding the indicator by clicking or double clicking the title/description area.
 
 **Visit <https://aklump.github.io/environment_indicator_loft> for full documentation.**
 

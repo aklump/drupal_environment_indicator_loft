@@ -1,14 +1,14 @@
-                    Environment Indicator Loft Drupal Module
+                 Environment Indicator Loft UX, a Drupal Module
 
    Environment Indicator Loft
 
 Summary
 
-   This is an alternative UX for the Drupal module [1]Environment
-   Indicator by [2]In the Loft Studios. It removes the color in the Admin
-   toolbar, and wraps the entire screen in a faint edge glow. It provides
-   the GIT branch in the description. It allows hiding the indicator by
-   clicking or double clicking the title/description area.
+   This is an alternative UX by [1]In the Loft Studios for the well known
+   Drupal module [2]Environment Indicator. It removes the color from the
+   admin toolbar, and wraps the entire screen in a faint edge glow. It
+   provides the GIT branch in the description. It allows hiding the
+   indicator by clicking or double clicking the title/description area.
 
    Visit [3]https://aklump.github.io/environment_indicator_loft for full
    documentation.
@@ -52,8 +52,8 @@ Contact The Developer
 
 References
 
-   1. https://www.drupal.org/project/environment_indicator
-   2. http://intheloftstudios.com/
+   1. http://intheloftstudios.com/
+   2. https://www.drupal.org/project/environment_indicator
    3. https://aklump.github.io/environment_indicator_loft
    4. https://www.drupal.org/project/environment_indicator
    5. https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4E5KZHDQCEUV8&item_name=Gratitude%20for%20aklump%2Fenvironment_indicator_loft
