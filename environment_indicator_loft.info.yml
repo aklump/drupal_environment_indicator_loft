@@ -3,7 +3,7 @@ description: 'Alters the visual to emulate the deprecated Loft Deploy module.'
 package: 'In the Loft Studios'
 type: module
 core: 8.x
-version: 8.x-1.0
+version: 8.x-1.0.1
 dependencies:
   - 'drupal:environment_indicator'
 author: aklump
