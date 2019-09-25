@@ -42,4 +42,21 @@ function environment_indicator_loft_preprocess_environment_indicator(&$vars) {
       'background-color:' . $element['#bg_color'],
     ]),
   ]);
+  $vars['branch'] = _environment_indicator_loft_git_branch();
+}
+
+/**
+ * Get the current Git branch.
+ *
+ * @return string
+ *   The git branch of the Drupal root.
+ */
+function _environment_indicator_loft_git_branch() {
+  static $git_branch;
+  if ($git_branch === NULL) {
+    $git_branch = exec('cd ' . \Drupal::root() . ' && git rev-parse --abbrev-ref HEAD', $git);
+    \Drupal::moduleHandler()->alter('loft_deploy_git_branch', $git_branch);
+  }
+
+  return $git_branch;
 }

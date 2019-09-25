@@ -16,7 +16,8 @@
 <div{{ attributes.addClass('environment-indicator') }}>
   <a class="js-environment-indicator__hide" href="#">
     <span class="environment-indicator__title"{{ color }}>{{ title }}{% if
-        description %}: {{ description }}{% endif %}</span>
+        branch %} ~ {{ branch }}{% endif %}{% if
+        description %} ~ {{ description }}{% endif %}</span>
   </a>
   <div class="environment-indicator__n"{{ color }}></div>
   <div class="environment-indicator__e"{{ color }}></div>
