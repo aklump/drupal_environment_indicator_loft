@@ -1,6 +1,6 @@
 # Environment Indicator Loft Drupal Module
 
-![Environment Indicator Loft](images/screenshot.png)
+![Environment Indicator Loft](docs/images/screenshot.png)
 
 ## Summary
 
