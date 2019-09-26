@@ -37,6 +37,8 @@ Usage
        hide the indicator. You can use this if you are doing some critical
        theming and you do not want the visual interference of the border
        for a time.
+     * Hold down META while clicking to access the switcher (@todo This
+       has not been built yet.)
 
 Contact The Developer
 
