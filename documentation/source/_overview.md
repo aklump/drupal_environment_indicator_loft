@@ -20,8 +20,8 @@ This is an alternative UX by [In the Loft Studios](http://intheloftstudios.com) 
 ## Contributing
 
 If you find this project useful... please consider [making a donation](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4E5KZHDQCEUV8&item_name=Gratitude%20for%20aklump%2Fenvironment_indicator_loft).
-
 ## Usage
 
 * Single click the title in the bottom right hand and the indicator will be hidden for that request.
 * Double click the title and a cookie will be set for 30 minutes to hide the indicator.  You can use this if you are doing some critical theming and you do not want the visual interference of the border for a time.
+* Hold down META while clicking to access the switcher (@todo This has not been built yet.)
