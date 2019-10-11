@@ -10,7 +10,25 @@
 
 <ol>
 <li>Configure Environment Indicator as per that module's instructions.</li>
-<li>Download this module to <em>web/modules/custom/</em>.</li>
+<li>Setup the correct permissions.</li>
+<li><p>An example configuration is to add something like this to <em>settings.php</em>; the constants must be defined previously in some fashion for this example to work.</p>
+
+<pre><code>  switch (DRUPAL_ENV) {
+    case DRUPAL_ENV_DEV:
+      $config['environment_indicator.indicator']['bg_color'] = '#0ff';
+      $config['environment_indicator.indicator']['fg_color'] = '#000';
+      $config['environment_indicator.indicator']['name'] = 'Development';
+      break;
+
+    case DRUPAL_ENV_STAGING:
+      $config['environment_indicator.indicator']['bg_color'] = '#0f0';
+      $config['environment_indicator.indicator']['fg_color'] = '#000';
+      $config['environment_indicator.indicator']['name'] = 'Test';
+      break;
+
+  }
+</code></pre></li>
+<li><p>Download this module to <em>web/modules/custom/</em>.</p></li>
 <li>Enable this module and the UX of the module will change.</li>
 <li><code>drush en environement_indicator_loft</code></li>
 </ol>
