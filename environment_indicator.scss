@@ -7,6 +7,9 @@ $offset: $border_width / -2;
   right: 0;
   top: 0;
   z-index: 998; //admin menu is 999
+  &.is-hidden {
+    display: none;
+  }
 }
 
 .environment-indicator__title {

@@ -8,8 +8,14 @@
 
   Drupal.behaviors.environmentIndicatorLoft = {
     attach: function(context) {
-      function hideForLonger() {
-        $indicator.fadeOut(function() {
+      /**
+       * Hide indicator for longer using a cookie.
+       *
+       * @param int duration
+       *   The cookie duration in seconds.
+       */
+      function hideForLonger(duration) {
+        $indicator.filter(':visible').fadeOut(function() {
           $indicator.fadeIn(function() {
             hideForRequest();
           });
@@ -17,7 +23,7 @@
 
         // Cookie handling.
         var expiry = new Date(),
-          time = expiry.getTime() + 600 * 1000;
+          time = expiry.getTime() + duration * 1000;
         expiry.setTime(time);
         $.cookie('environment-indicator', 'hidden', {
           expires: expiry,
@@ -26,44 +32,54 @@
 
       /**
        * Hide indicator for the duration of this request.
+       *
+       * @param callable callback
+       *   A callback for when the fade is complete.
        */
-      function hideForRequest() {
-        $indicator.fadeOut();
+      function hideForRequest(callback) {
+        $indicator.fadeOut(function() {
+          if (typeof callback === 'function') callback();
+        });
       }
 
       var $indicator = $('.environment-indicator');
 
-      var autofade = $indicator.data('autofade');
-      if (autofade) {
-        setTimeout(function() {
-          hideForRequest();
-        }, autofade * 1000);
-      }
-
       // Hide a previously hidden indicator.
       var isHiddenByCookie = $.cookie('environment-indicator');
-      if (isHiddenByCookie) {
+      if (isHiddenByCookie && $indicator.is(':visible')) {
         $indicator.hide();
         return;
       }
 
-      // Setup for toggle interaction.
-      var $toggle = $('.js-environment-indicator__hide');
+      // Handle the automatic manipulation.
+      var autocookie = $indicator.data('autocookie');
+      var autofade = $indicator.data('autofade');
+      if (autofade) {
+        setTimeout(function() {
+          hideForRequest(function() {
+            if (autocookie) {
+              hideForLonger(autocookie);
+            }
+          });
+        }, autofade * 1000);
+      }
 
-      // Single click hides until next page load.
-      $toggle.once().dblclick(function(e) {
-        hideForLonger();
-      });
-
-      $toggle.once().click(function(e) {
-        // Was the meta key held down? Set cookie?
-        if (e.metaKey) {
-          // TODO Handle the switcher.
-        } else {
-          hideForRequest();
-        }
-        return false;
-      });
+      // Setup click handlers.
+      $('.js-environment-indicator__hide')
+        .once()
+        .dblclick(function(e) {
+          hideForLonger(600);
+          return e.preventDefault();
+        })
+        .click(function(e) {
+          // Was the meta key held down? Set cookie?
+          if (e.metaKey) {
+            // TODO Handle the switcher.
+          } else {
+            hideForRequest();
+          }
+          return e.preventDefault();
+        });
     },
   };
 })(jQuery, Drupal);
