@@ -54,9 +54,18 @@ You can use something like the following for demo websites:
         <?php
         $config['environment_indicator.indicator']['bg_color'] = '#ff7f00';
         $config['environment_indicator.indicator']['fg_color'] = '#000';
+        
+        // Let our demo users know their data is not persistent.
         $config['environment_indicator.indicator']['name'] = 'Demonstration Website: Your Data May Be Deleted At Any Time';
+        
+        // Hide the GIT branch for our demo users, they don't care.
         $config['environment_indicator.indicator']['branch'] = '';
+        
+        // Autofade in this many seconds.
         $config['environment_indicator.indicator']['autofade'] = 3;
+        
+        // Set a cookie to hide for this many seconds after autofade; autofade must be > 0.
+        $config['environment_indicator.indicator']['autocookie'] = 600;
 
 ## Contact The Developer
 
