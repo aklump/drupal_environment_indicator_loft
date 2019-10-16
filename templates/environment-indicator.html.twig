@@ -13,14 +13,16 @@
  * @ingroup themeable
  */
 #}
-<div{{ attributes.addClass('environment-indicator') }}>
-  <a class="js-environment-indicator__hide" href="#">
+<div{{ attributes.addClass('environment-indicator').setAttribute
+  ('data-autofade', autofade)
+}}>
+<a class="js-environment-indicator__hide" href="#">
     <span class="environment-indicator__title"{{ color }}>{{ title }}{% if
         branch %} ~ {{ branch }}{% endif %}{% if
         description %} ~ {{ description }}{% endif %}</span>
-  </a>
-  <div class="environment-indicator__n"{{ color }}></div>
-  <div class="environment-indicator__e"{{ color }}></div>
-  <div class="environment-indicator__s"{{ color }}></div>
-  <div class="environment-indicator__w"{{ color }}></div>
+</a>
+<div class="environment-indicator__n"{{ color }}></div>
+<div class="environment-indicator__e"{{ color }}></div>
+<div class="environment-indicator__s"{{ color }}></div>
+<div class="environment-indicator__w"{{ color }}></div>
 </div{{ attributes }}>

@@ -44,7 +44,10 @@ function environment_indicator_loft_preprocess_environment_indicator(&$vars) {
       'background-color:' . $element['#bg_color'],
     ]),
   ]);
-  $vars['branch'] = _environment_indicator_loft_git_branch();
+
+  $active_environment = \Drupal::config('environment_indicator.indicator');
+  $vars['autofade'] = intval($active_environment->get('autofade', 0));
+  $vars['branch'] = $active_environment->get('branch', NULL) ?? _environment_indicator_loft_git_branch();
 }
 
 /**

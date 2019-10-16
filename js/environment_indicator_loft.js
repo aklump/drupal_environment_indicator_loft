@@ -33,6 +33,13 @@
 
       var $indicator = $('.environment-indicator');
 
+      var autofade = $indicator.data('autofade');
+      if (autofade) {
+        setTimeout(function() {
+          hideForRequest();
+        }, autofade * 1000);
+      }
+
       // Hide a previously hidden indicator.
       var isHiddenByCookie = $.cookie('environment-indicator');
       if (isHiddenByCookie) {
