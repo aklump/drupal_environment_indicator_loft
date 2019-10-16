@@ -59,6 +59,17 @@ Usage
      * Hold down META while clicking to access the switcher (@todo This
        has not been built yet.)
 
+For a Demonstration Website
+
+   You can use something like the following for demo websites:
+    <?php
+    $config['environment_indicator.indicator']['bg_color'] = '#ff7f00';
+    $config['environment_indicator.indicator']['fg_color'] = '#000';
+    $config['environment_indicator.indicator']['name'] = 'Demonstration Website:
+ Your Data May Be Deleted At Any Time';
+    $config['environment_indicator.indicator']['branch'] = '';
+    $config['environment_indicator.indicator']['autofade'] = 3;
+
 Contact The Developer
 
    In the Loft Studios
