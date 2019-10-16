@@ -52,6 +52,8 @@ function environment_indicator_loft_preprocess_environment_indicator(&$vars) {
 
   if (!empty($_COOKIE['environment-indicator'])) {
     $vars['attributes']['class'][] = 'is-hidden';
+    $vars['autofade'] = 0;
+    $vars['autocookie'] = 0;
   }
 }
 
