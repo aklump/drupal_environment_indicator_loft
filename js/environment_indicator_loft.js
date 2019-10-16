@@ -26,6 +26,7 @@
           time = expiry.getTime() + duration * 1000;
         expiry.setTime(time);
         $.cookie('environment-indicator', 'hidden', {
+          path: '/',
           expires: expiry,
         });
       }
