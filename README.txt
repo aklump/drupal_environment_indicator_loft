@@ -55,7 +55,11 @@ Usage
      * Double click the title and a cookie will be set for 30 minutes to
        hide the indicator. You can use this if you are doing some critical
        theming and you do not want the visual interference of the border
-       for a time.
+       for a time. To control the duration modify this snippet and add to
+       settings.dev.php.
+// Set the duration for to 30 minutes for double click hide.
+$config['environment_indicator.indicator']['manual_cookie'] = 1800;
+
      * Hold down META while clicking to access the switcher (@todo This
        has not been built yet.)
 
