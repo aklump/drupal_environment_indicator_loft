@@ -66,10 +66,11 @@
       }
 
       // Setup click handlers.
+      var cookieDuration = $indicator.data('manual_cookie') || 600;
       $('.js-environment-indicator__hide')
         .once()
         .dblclick(function(e) {
-          hideForLonger(600);
+          hideForLonger(cookieDuration);
           return e.preventDefault();
         })
         .click(function(e) {

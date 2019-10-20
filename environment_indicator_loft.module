@@ -48,6 +48,7 @@ function environment_indicator_loft_preprocess_environment_indicator(&$vars) {
   $active_environment = \Drupal::config('environment_indicator.indicator');
   $vars['autofade'] = intval($active_environment->get('autofade', 0));
   $vars['autocookie'] = intval($active_environment->get('autocookie', 0));
+  $vars['manual_cookie'] = intval($active_environment->get('manual_cookie', 0));
   $vars['branch'] = $active_environment->get('branch', NULL) ?? _environment_indicator_loft_git_branch();
 
   if (!empty($_COOKIE['environment-indicator'])) {
