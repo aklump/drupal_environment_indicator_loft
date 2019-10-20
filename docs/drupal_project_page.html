@@ -72,8 +72,12 @@
 
 <ul>
 <li>Single click the title in the bottom right hand and the indicator will be hidden for that request.</li>
-<li>Double click the title and a cookie will be set for 30 minutes to hide the indicator.  You can use this if you are doing some critical theming and you do not want the visual interference of the border for a time.</li>
-<li>Hold down META while clicking to access the switcher (@todo This has not been built yet.)</li>
+<li><p>Double click the title and a cookie will be set for 30 minutes to hide the indicator.  You can use this if you are doing some critical theming and you do not want the visual interference of the border for a time.  To control the duration modify this snippet and add to <em>settings.dev.php</em>.</p>
+
+<pre><code>// Set the duration for to 30 minutes for double click hide.
+$config['environment_indicator.indicator']['manual_cookie'] = 1800;
+</code></pre></li>
+<li><p>Hold down META while clicking to access the switcher (@todo This has not been built yet.)</p></li>
 </ul>
 
 <h2>For a Demonstration Website</h2>
@@ -105,7 +109,7 @@
 <footer>
   <div class="pager"><a href="CHANGELOG.html" class="prev CHANGELOG">&laquo;Changelog</a><a href="index.html" class="index pager__book-title"></a><a href="README.html" class="next readme">Environment Indicator Loft UX, a Drupal Module&raquo;</a></div>  
   <div id="footer-legaleeze">
-    <p class="legaleeze center">Version: 8.x-1.0.11 &bull; Last Updated: Tue, 15 Oct 2019 20:11:55 -0700</p>
+    <p class="legaleeze center">Version: 8.x-1.0.12 &bull; Last Updated: Sat, 19 Oct 2019 18:11:42 -0700</p>
   </div>
 </footer>
 
