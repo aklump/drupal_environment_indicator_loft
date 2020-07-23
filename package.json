@@ -2,6 +2,6 @@
     "license": "GPL-2.0-or-later",
     "devDependencies": {
         "node-sass-chokidar": "^1.3.5",
-        "prettier": "1.18.2"
+        "prettier": "^1.18"
     }
 }
