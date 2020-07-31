@@ -80,7 +80,7 @@ $config['environment_indicator.indicator']['manual_cookie'] = 1800;
 <li><p>Hold down META while clicking to access the switcher (@todo This has not been built yet.)</p></li>
 </ul>
 
-<h2>For a Demonstration Website</h2>
+<h3>For a Demonstration Website</h3>
 
 <p>You can use something like the following for demo websites:</p>
 
@@ -100,6 +100,10 @@ $config['environment_indicator.indicator']['manual_cookie'] = 1800;
     // Set a cookie to hide for this many seconds after autofade; autofade must be &gt; 0.
     $config['environment_indicator.indicator']['autocookie'] = 600;
 </code></pre>
+
+<h3>Permissions Strategy</h3>
+
+<p>In all environments EXCEPT live you will need to grant the permission <code>access environment indicator</code> to both anonymous and authenticated users.  Refer to Drupal 8 Shorts for how to set this up using <a href="https://www.drupal.org/project/config_split">Config Split</a> and <a href="https://www.drupal.org/project/config_role_split">Config Role Split</a> modules.</p>
 </section>
 
 <div class="search__results">
@@ -109,7 +113,7 @@ $config['environment_indicator.indicator']['manual_cookie'] = 1800;
 <footer>
   <div class="pager"><a href="CHANGELOG.html" class="prev CHANGELOG">&laquo;Changelog</a><a href="index.html" class="index pager__book-title"></a><a href="README.html" class="next readme">Environment Indicator Loft UX, a Drupal Module&raquo;</a></div>  
   <div id="footer-legaleeze">
-    <p class="legaleeze center">Version: 8.x-1.0.15 &bull; Last Updated: Wed, 22 Jul 2020 20:38:16 -0700</p>
+    <p class="legaleeze center">Version: 8.x-1.0.16 &bull; Last Updated: Fri, 31 Jul 2020 11:02:55 -0700</p>
   </div>
 </footer>
 

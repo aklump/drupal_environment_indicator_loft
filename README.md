@@ -51,7 +51,7 @@ If you find this project useful... please consider [making a donation](https://w
 
 * Hold down META while clicking to access the switcher (@todo This has not been built yet.)
 
-## For a Demonstration Website
+### For a Demonstration Website
 
 You can use something like the following for demo websites:
 
@@ -70,6 +70,10 @@ You can use something like the following for demo websites:
         
         // Set a cookie to hide for this many seconds after autofade; autofade must be > 0.
         $config['environment_indicator.indicator']['autocookie'] = 600;
+
+### Permissions Strategy
+
+In all environments EXCEPT live you will need to grant the permission `access environment indicator` to both anonymous and authenticated users.  Refer to Drupal 8 Shorts for how to set this up using [Config Split](https://www.drupal.org/project/config_split) and [Config Role Split](https://www.drupal.org/project/config_role_split) modules.
 
 ## Contact The Developer
 
