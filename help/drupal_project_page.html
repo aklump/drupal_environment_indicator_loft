@@ -55,7 +55,7 @@ $config['environment_indicator.indicator']['manual_cookie'] = 1800;
 <li><p>Hold down META while clicking to access the switcher (@todo This has not been built yet.)</p></li>
 </ul>
 
-<h2>For a Demonstration Website</h2>
+<h3>For a Demonstration Website</h3>
 
 <p>You can use something like the following for demo websites:</p>
 
@@ -75,3 +75,7 @@ $config['environment_indicator.indicator']['manual_cookie'] = 1800;
     // Set a cookie to hide for this many seconds after autofade; autofade must be &gt; 0.
     $config['environment_indicator.indicator']['autocookie'] = 600;
 </code></pre>
+
+<h3>Permissions Strategy</h3>
+
+<p>In all environments EXCEPT live you will need to grant the permission <code>access environment indicator</code> to both anonymous and authenticated users.  Refer to Drupal 8 Shorts for how to set this up using <a href="https://www.drupal.org/project/config_split">Config Split</a> and <a href="https://www.drupal.org/project/config_role_split">Config Role Split</a> modules.</p>

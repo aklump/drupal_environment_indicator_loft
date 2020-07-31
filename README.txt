@@ -63,7 +63,7 @@ $config['environment_indicator.indicator']['manual_cookie'] = 1800;
      * Hold down META while clicking to access the switcher (@todo This
        has not been built yet.)
 
-For a Demonstration Website
+  For a Demonstration Website
 
    You can use something like the following for demo websites:
     <?php
@@ -84,6 +84,13 @@ For a Demonstration Website
 be > 0.
     $config['environment_indicator.indicator']['autocookie'] = 600;
 
+  Permissions Strategy
+
+   In all environments EXCEPT live you will need to grant the permission
+   access environment indicator to both anonymous and authenticated users.
+   Refer to Drupal 8 Shorts for how to set this up using [6]Config Split
+   and [7]Config Role Split modules.
+
 Contact The Developer
 
    In the Loft Studios
@@ -92,8 +99,8 @@ Contact The Developer
    360.690.6432
    PO Box 29294 Bellingham, WA 98228-1294
 
-   [6]http://www.intheloftstudios.com
-   [7]https://github.com/aklump
+   [8]http://www.intheloftstudios.com
+   [9]https://github.com/aklump
 
 References
 
@@ -102,5 +109,7 @@ References
    3. https://aklump.github.io/environment_indicator_loft
    4. https://www.drupal.org/project/environment_indicator
    5. https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4E5KZHDQCEUV8&item_name=Gratitude%20for%20aklump%2Fenvironment_indicator_loft
-   6. http://www.intheloftstudios.com/
-   7. https://github.com/aklump
+   6. https://www.drupal.org/project/config_split
+   7. https://www.drupal.org/project/config_role_split
+   8. http://www.intheloftstudios.com/
+   9. https://github.com/aklump
