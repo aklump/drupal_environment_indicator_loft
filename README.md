@@ -11,6 +11,8 @@ This is an alternative UX by [In the Loft Studios](http://intheloftstudios.com) 
 ## Quick Start
 
 1. Configure Environment Indicator as per that module's instructions.
+1. Go to /admin/config/development/environment-indicator and uncheck all _Toolbar integration_ boxes and _Save configuration_.
+1. Do not create an Environment Switcher.
 1. Setup the correct permissions.
 1. An example configuration is to add something like this to _settings.php_; the constants must be defined previously in some fashion for this example to work.
 

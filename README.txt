@@ -16,8 +16,11 @@ Summary
 Quick Start
 
     1. Configure Environment Indicator as per that module's instructions.
-    2. Setup the correct permissions.
-    3. An example configuration is to add something like this to
+    2. Go to /admin/config/development/environment-indicator and uncheck
+       all Toolbar integration boxes and Save configuration.
+    3. Do not create an Environment Switcher.
+    4. Setup the correct permissions.
+    5. An example configuration is to add something like this to
        settings.php; the constants must be defined previously in some
        fashion for this example to work.
   switch (DRUPAL_ENV) {
@@ -35,9 +38,9 @@ Quick Start
 
   }
 
-    4. Download this module to web/modules/custom/.
-    5. Enable this module and the UX of the module will change.
-    6. drush en environement_indicator_loft
+    6. Download this module to web/modules/custom/.
+    7. Enable this module and the UX of the module will change.
+    8. drush en environement_indicator_loft
 
 Requirements
 
