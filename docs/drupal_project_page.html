@@ -27,7 +27,7 @@
 
 <h2>Summary</h2>
 
-<p>This is an alternative UX by <a href="http://intheloftstudios.com">In the Loft Studios</a> for the well known Drupal module <a href="https://www.drupal.org/project/environment_indicator">Environment Indicator</a>.  It removes the color from the admin toolbar, and wraps the entire screen in a faint edge glow.  It provides the GIT branch in the description.  It allows hiding the indicator by clicking or double clicking the title/description area.</p>
+<p>This is an alternative UX by <a href="http://intheloftstudios.com">In the Loft Studios</a> for the well known Drupal module <a href="https://www.drupal.org/project/environment_indicator">Environment Indicator</a>. It removes the color from the admin toolbar, and wraps the entire screen in a faint edge glow. It provides the GIT branch in the description. It allows hiding the indicator by clicking or double clicking the title/description area.</p>
 
 <p><strong>Visit <a href="https://aklump.github.io/environment_indicator_loft">https://aklump.github.io/environment_indicator_loft</a> for full documentation.</strong></p>
 
@@ -74,7 +74,7 @@
 
 <ul>
 <li>Single click the title in the bottom right hand and the indicator will be hidden for that request.</li>
-<li><p>Double click the title and a cookie will be set for 30 minutes to hide the indicator.  You can use this if you are doing some critical theming and you do not want the visual interference of the border for a time.  To control the duration modify this snippet and add to <em>settings.dev.php</em>.</p>
+<li><p>Double click the title and a cookie will be set for 30 minutes to hide the indicator. You can use this if you are doing some critical theming and you do not want the visual interference of the border for a time. To control the duration modify this snippet and add to <em>settings.dev.php</em>.</p>
 
 <pre><code>// Set the duration for to 30 minutes for double click hide.
 $config['environment_indicator.indicator']['manual_cookie'] = 1800;
@@ -105,7 +105,18 @@ $config['environment_indicator.indicator']['manual_cookie'] = 1800;
 
 <h3>Permissions Strategy</h3>
 
-<p>In all environments EXCEPT live you will need to grant the permission <code>access environment indicator</code> to both anonymous and authenticated users.  Refer to Drupal 8 Shorts for how to set this up using <a href="https://www.drupal.org/project/config_split">Config Split</a> and <a href="https://www.drupal.org/project/config_role_split">Config Role Split</a> modules.</p>
+<p>In all environments EXCEPT live you will need to grant the permission <code>access environment indicator</code> to both anonymous and authenticated users. Refer to Drupal 8 Shorts for how to set this up using <a href="https://www.drupal.org/project/config_split">Config Split</a> and <a href="https://www.drupal.org/project/config_role_split">Config Role Split</a> modules.</p>
+
+<h2>Scripting</h2>
+
+<p>Here is a set of Drush commands that will configure permissions and settings. I add this to a hook that runs after I pull my Live database to my Dev environment to enable and configure the module in one fell swoop.</p>
+
+<pre><code class="bash"> drush en -y environment_indicator_loft
+ drush role-add-perm anonymous 'access environment indicator'
+ drush role-add-perm authenticated 'access environment indicator'
+ drush cdel -y environment_indicator.settings toolbar_integration
+ drush cdel -y environment_indicator.settings favicon
+</code></pre>
 </section>
 
 <div class="search__results">
@@ -115,7 +126,7 @@ $config['environment_indicator.indicator']['manual_cookie'] = 1800;
 <footer>
   <div class="pager"><a href="CHANGELOG.html" class="prev CHANGELOG">&laquo;Changelog</a><a href="index.html" class="index pager__book-title"></a><a href="README.html" class="next readme">Environment Indicator Loft UX, a Drupal Module&raquo;</a></div>  
   <div id="footer-legaleeze">
-    <p class="legaleeze center">Version: 8.x-1.0.23 &bull; Last Updated: Sat, 14 Aug 2021 16:05:07 -0700</p>
+    <p class="legaleeze center">Version: 8.x-1.0.24 &bull; Last Updated: Sat, 14 Aug 2021 17:16:28 -0700</p>
   </div>
 </footer>
 
