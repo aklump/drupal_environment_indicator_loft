@@ -2,7 +2,7 @@
 
 ## Summary
 
-This is an alternative UX by [In the Loft Studios](http://intheloftstudios.com) for the well known Drupal module [Environment Indicator](https://www.drupal.org/project/environment_indicator).  It removes the color from the admin toolbar, and wraps the entire screen in a faint edge glow.  It provides the GIT branch in the description.  It allows hiding the indicator by clicking or double clicking the title/description area.
+This is an alternative UX by [In the Loft Studios](http://intheloftstudios.com) for the well known Drupal module [Environment Indicator](https://www.drupal.org/project/environment_indicator). It removes the color from the admin toolbar, and wraps the entire screen in a faint edge glow. It provides the GIT branch in the description. It allows hiding the indicator by clicking or double clicking the title/description area.
 
 **Visit <https://aklump.github.io/environment_indicator_loft> for full documentation.**
 
@@ -28,7 +28,7 @@ This is an alternative UX by [In the Loft Studios](http://intheloftstudios.com) 
               break;
         
           }
-          
+
 1. Download this module to _web/modules/custom/_.
 1. Enable this module and the UX of the module will change.
 1. `drush en environement_indicator_loft`
@@ -44,7 +44,7 @@ If you find this project useful... please consider [making a donation](https://w
 ## Usage
 
 * Single click the title in the bottom right hand and the indicator will be hidden for that request.
-* Double click the title and a cookie will be set for 30 minutes to hide the indicator.  You can use this if you are doing some critical theming and you do not want the visual interference of the border for a time.  To control the duration modify this snippet and add to _settings.dev.php_.
+* Double click the title and a cookie will be set for 30 minutes to hide the indicator. You can use this if you are doing some critical theming and you do not want the visual interference of the border for a time. To control the duration modify this snippet and add to _settings.dev.php_.
 
         // Set the duration for to 30 minutes for double click hide.
         $config['environment_indicator.indicator']['manual_cookie'] = 1800;
@@ -73,4 +73,16 @@ You can use something like the following for demo websites:
 
 ### Permissions Strategy
 
-In all environments EXCEPT live you will need to grant the permission `access environment indicator` to both anonymous and authenticated users.  Refer to Drupal 8 Shorts for how to set this up using [Config Split](https://www.drupal.org/project/config_split) and [Config Role Split](https://www.drupal.org/project/config_role_split) modules.
+In all environments EXCEPT live you will need to grant the permission `access environment indicator` to both anonymous and authenticated users. Refer to Drupal 8 Shorts for how to set this up using [Config Split](https://www.drupal.org/project/config_split) and [Config Role Split](https://www.drupal.org/project/config_role_split) modules.
+
+## Scripting
+
+Here is a set of Drush commands that will configure permissions and settings. I add this to a hook that runs after I pull my Live database to my Dev environment to enable and configure the module in one fell swoop.
+
+```bash
+ drush en -y environment_indicator_loft
+ drush role-add-perm anonymous 'access environment indicator'
+ drush role-add-perm authenticated 'access environment indicator'
+ drush cdel -y environment_indicator.settings toolbar_integration
+ drush cdel -y environment_indicator.settings favicon
+```
