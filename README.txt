@@ -94,6 +94,18 @@ be > 0.
    Refer to Drupal 8 Shorts for how to set this up using [6]Config Split
    and [7]Config Role Split modules.
 
+Scripting
+
+   Here is a set of Drush commands that will configure permissions and
+   settings. I add this to a hook that runs after I pull my Live database
+   to my Dev environment to enable and configure the module in one fell
+   swoop.
+ drush en -y environment_indicator_loft
+ drush role-add-perm anonymous 'access environment indicator'
+ drush role-add-perm authenticated 'access environment indicator'
+ drush cdel -y environment_indicator.settings toolbar_integration
+ drush cdel -y environment_indicator.settings favicon
+
 Contact The Developer
 
    In the Loft Studios
