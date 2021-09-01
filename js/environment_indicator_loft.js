@@ -25,7 +25,7 @@
         var expiry = new Date(),
           time = expiry.getTime() + duration * 1000;
         expiry.setTime(time);
-        $.cookie('environment-indicator', 'hidden', {
+        $.cookie('Drupal.visitor.environment-indicator', 'hidden', {
           path: '/',
           expires: expiry,
         });
@@ -66,7 +66,7 @@
       }
 
       // Setup click handlers.
-      var cookieDuration = $indicator.data('manual_cookie') || 600;
+      var cookieDuration = $indicator.data('manual_cookie');
       $('.js-environment-indicator__hide')
         .once()
         .dblclick(function(e) {

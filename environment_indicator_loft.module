@@ -1,5 +1,6 @@
 <?php
 
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Template\Attribute;
 
 /**
@@ -46,15 +47,68 @@ function environment_indicator_loft_preprocess_environment_indicator(&$vars) {
   ]);
 
   $active_environment = \Drupal::config('environment_indicator.indicator');
-  $vars['autofade'] = intval($active_environment->get('autofade', 0));
-  $vars['autocookie'] = intval($active_environment->get('autocookie', 0));
-  $vars['manual_cookie'] = intval($active_environment->get('manual_cookie', 0));
+  $vars['autofade'] = intval($active_environment->get('autofade'));
+  $vars['autocookie'] = intval($active_environment->get('autocookie'));
+  $vars['manual_cookie'] = intval($active_environment->get('manual_cookie')) ?: 1800;
   $vars['branch'] = $active_environment->get('branch', NULL) ?? _environment_indicator_loft_git_branch();
 
-  if (!empty($_COOKIE['environment-indicator'])) {
+  if (!empty($_COOKIE['Drupal_visitor_environment-indicator'])) {
     $vars['attributes']['class'][] = 'is-hidden';
     $vars['autofade'] = 0;
     $vars['autocookie'] = 0;
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function environment_indicator_loft_form_environment_indicator_settings_form_alter(array &$form) {
+  $key = (string) t('Hide for...');
+  $form['set_cookie'] = [
+    '#title' => t('Indicator display'),
+    '#type' => 'select',
+    '#options' => [
+      0 => t('Choose...'),
+      $key => [
+        600 => t('10 mins'),
+        1800 => t('30 mins'),
+        3600 => t('1 hour'),
+        7200 => t('2 hours'),
+        21600 => t('6 hours'),
+        86400 => t('1 day'),
+      ],
+      (string) t('Reset') => [
+        0 => t('Show immediately'),
+      ],
+    ],
+  ];
+
+  $current = $_COOKIE['Drupal_visitor_environment-indicator'] ?? NULL;
+  if ($current) {
+    $options = array_keys($form['set_cookie']['#options'][$key]);
+    do {
+      $default_value = array_shift($options);
+    } while ($default_value < $current && $options);
+    $form['set_cookie']['#default_value'] = $default_value;
+  }
+
+  $form['#submit'][] = 'environment_indicator_loft_form_environment_indicator_settings_form_submit';
+}
+
+/**
+ * Form submit handler for the admin form.
+ *
+ * @param array $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function environment_indicator_loft_form_environment_indicator_settings_form_submit(array $form, FormStateInterface $form_state) {
+  $value = $form_state->getValue('set_cookie');
+  if ($value) {
+    // @see user_cookie_save()
+    setrawcookie('Drupal.visitor.environment-indicator', rawurlencode($value), REQUEST_TIME + $value, '/');
+  }
+  else {
+    user_cookie_delete('environment-indicator');
   }
 }
 
@@ -73,3 +127,4 @@ function _environment_indicator_loft_git_branch() {
 
   return $git_branch;
 }
+
