@@ -52,7 +52,14 @@ function environment_indicator_loft_preprocess_environment_indicator(&$vars) {
   $vars['manual_cookie'] = intval($active_environment->get('manual_cookie')) ?: 1800;
   $vars['branch'] = $active_environment->get('branch', NULL) ?? _environment_indicator_loft_git_branch();
 
-  if (!empty($_COOKIE['Drupal_visitor_environment-indicator'])) {
+  $should_hide = !empty($_COOKIE['Drupal_visitor_environment-indicator']);
+  if (!$should_hide) {
+    $should_hide = \Drupal::service('config.factory')
+      ->get('environment_indicator.indicator')
+      ->get('disable_until');
+  }
+
+  if ($should_hide) {
     $vars['attributes']['class'][] = 'is-hidden';
     $vars['autofade'] = 0;
     $vars['autocookie'] = 0;
@@ -64,7 +71,7 @@ function environment_indicator_loft_preprocess_environment_indicator(&$vars) {
  */
 function environment_indicator_loft_form_environment_indicator_settings_form_alter(array &$form) {
   $key = (string) t('Hide for...');
-  $form['set_cookie'] = [
+  $form['disable_until'] = [
     '#title' => t('Indicator display'),
     '#type' => 'select',
     '#options' => [
@@ -83,13 +90,17 @@ function environment_indicator_loft_form_environment_indicator_settings_form_alt
     ],
   ];
 
-  $current = $_COOKIE['Drupal_visitor_environment-indicator'] ?? NULL;
+  $active_environment = \Drupal::config('environment_indicator.indicator');
+  $current = intval($active_environment->get('disable_until')) ?: 0;
   if ($current) {
-    $options = array_keys($form['set_cookie']['#options'][$key]);
+    $current -= time();
+  }
+  if ($current) {
+    $options = array_keys($form['disable_until']['#options'][$key]);
     do {
       $default_value = array_shift($options);
     } while ($default_value < $current && $options);
-    $form['set_cookie']['#default_value'] = $default_value;
+    $form['disable_until']['#default_value'] = $default_value;
   }
 
   $form['#submit'][] = 'environment_indicator_loft_form_environment_indicator_settings_form_submit';
@@ -102,12 +113,19 @@ function environment_indicator_loft_form_environment_indicator_settings_form_alt
  * @param \Drupal\Core\Form\FormStateInterface $form_state
  */
 function environment_indicator_loft_form_environment_indicator_settings_form_submit(array $form, FormStateInterface $form_state) {
-  $value = $form_state->getValue('set_cookie');
+  $config = \Drupal::service('config.factory')
+    ->getEditable('environment_indicator.indicator');
+  $value = $form_state->getValue('disable_until');
   if ($value) {
-    // @see user_cookie_save()
-    setrawcookie('Drupal.visitor.environment-indicator', rawurlencode($value), REQUEST_TIME + $value, '/');
+    $value += time();
+    $config
+      ->set('disable_until', $value)
+      ->save();
   }
   else {
+    $config
+      ->clear('disable_until')
+      ->save();
     user_cookie_delete('environment-indicator');
   }
 }
