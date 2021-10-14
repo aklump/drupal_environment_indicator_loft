@@ -2,8 +2,8 @@ name: 'Environment Indicator Loft UX'
 description: 'An alternative indicator UX by In the Loft Studios.'
 package: Development
 type: module
-core_version_requirement: ^8 || ^9
-version: 8.x-1.1.1
+core_version_requirement: '^8 || ^9'
+version: 8.x-1.2.0
 dependencies:
   - 'drupal:environment_indicator'
 author: aklump
