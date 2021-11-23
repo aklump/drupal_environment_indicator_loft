@@ -52,11 +52,20 @@ function environment_indicator_loft_preprocess_environment_indicator(&$vars) {
   $vars['manual_cookie'] = intval($active_environment->get('manual_cookie')) ?: 1800;
   $vars['branch'] = $active_environment->get('branch', NULL) ?? _environment_indicator_loft_git_branch();
 
-  $should_hide = !empty($_COOKIE['Drupal_visitor_environment-indicator']);
-  if (!$should_hide) {
-    $should_hide = \Drupal::service('config.factory')
-      ->get('environment_indicator.indicator')
-      ->get('disable_until');
+  // Clear the configuration setting if it's expired so that config export is
+  // bloated with a moot expired value.
+  $config = \Drupal::service('config.factory')
+    ->getEditable('environment_indicator.indicator');
+  $should_hide = $config->get('disable_until');
+  if (is_int($should_hide) && $should_hide <= time()) {
+    $config->clear('disable_until')->save();
+    $should_hide = false;
+  }
+
+  $should_hide_by_cookie = !empty($_COOKIE['Drupal_visitor_environment-indicator']);
+  if ($should_hide_by_cookie) {
+    $should_hide = $should_hide_by_cookie;
+    unset($should_hide_by_cookie);
   }
 
   if ($should_hide) {
