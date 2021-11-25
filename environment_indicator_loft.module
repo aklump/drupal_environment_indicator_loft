@@ -54,12 +54,11 @@ function environment_indicator_loft_preprocess_environment_indicator(&$vars) {
 
   // Clear the configuration setting if it's expired so that config export is
   // bloated with a moot expired value.
-  $config = \Drupal::service('config.factory')
-    ->getEditable('environment_indicator.indicator');
-  $should_hide = $config->get('disable_until');
+  $should_hide = \Drupal::state()
+    ->get('environment_indicator_loft.disable_until');
   if (is_int($should_hide) && $should_hide <= time()) {
-    $config->clear('disable_until')->save();
-    $should_hide = false;
+    \Drupal::state()->delete('environment_indicator_loft.disable_until');
+    $should_hide = FALSE;
   }
 
   $should_hide_by_cookie = !empty($_COOKIE['Drupal_visitor_environment-indicator']);
@@ -99,16 +98,16 @@ function environment_indicator_loft_form_environment_indicator_settings_form_alt
     ],
   ];
 
-  $active_environment = \Drupal::config('environment_indicator.indicator');
-  $current = intval($active_environment->get('disable_until')) ?: 0;
-  if ($current) {
-    $current -= time();
+  $disable_until = \Drupal::state()
+    ->get('environment_indicator_loft.disable_until', 0);
+  if ($disable_until) {
+    $disable_until -= time();
   }
-  if ($current) {
+  if ($disable_until) {
     $options = array_keys($form['disable_until']['#options'][$key]);
     do {
       $default_value = array_shift($options);
-    } while ($default_value < $current && $options);
+    } while ($default_value < $disable_until && $options);
     $form['disable_until']['#default_value'] = $default_value;
   }
 
@@ -122,19 +121,13 @@ function environment_indicator_loft_form_environment_indicator_settings_form_alt
  * @param \Drupal\Core\Form\FormStateInterface $form_state
  */
 function environment_indicator_loft_form_environment_indicator_settings_form_submit(array $form, FormStateInterface $form_state) {
-  $config = \Drupal::service('config.factory')
-    ->getEditable('environment_indicator.indicator');
   $value = $form_state->getValue('disable_until');
   if ($value) {
     $value += time();
-    $config
-      ->set('disable_until', $value)
-      ->save();
+    \Drupal::state()->set('environment_indicator_loft.disable_until', $value);
   }
   else {
-    $config
-      ->clear('disable_until')
-      ->save();
+    \Drupal::state()->delete('environment_indicator_loft.disable_until');
     user_cookie_delete('environment-indicator');
   }
 }
