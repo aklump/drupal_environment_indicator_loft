@@ -59,17 +59,14 @@ You can use something like the following for demo websites:
         $config['environment_indicator.indicator']['bg_color'] = '#ff7f00';
         $config['environment_indicator.indicator']['fg_color'] = '#000';
         
-        // Let our demo users know their data is not persistent.
-        $config['environment_indicator.indicator']['name'] = 'Demonstration Website: Your Data May Be Deleted At Any Time';
+        // Let our demo users know their data is not persistent by overridding the message.
+        $config['environment_indicator.indicator']['override'] = 'Demonstration Website: Your Data May Be Deleted At Any Time';
         
-        // Hide the GIT branch for our demo users, they don't care.
-        $config['environment_indicator.indicator']['branch'] = '';
-        
-        // Autofade in this many seconds.
+        // Auto fade-out message after this many seconds, on each page request.
         $config['environment_indicator.indicator']['autofade'] = 3;
         
-        // Set a cookie to hide for this many seconds after autofade; autofade must be > 0.
-        $config['environment_indicator.indicator']['autocookie'] = 600;
+        // ... don't want to show on every request, use a cookie to hide for this many seconds after showing.  In this example the override message will appear once every 10 minutes.
+        $config['environment_indicator.indicator']['throttle'] = 600;
 
 ### Permissions Strategy
 
