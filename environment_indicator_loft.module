@@ -1,6 +1,7 @@
 <?php
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\Template\Attribute;
 
 /**
@@ -16,7 +17,8 @@ function environment_indicator_loft_library_info_alter(&$libraries, $extension) 
     unset($libraries['drupal.environment_indicator']['css']['component']['css/environment_indicator.css']);
 
     // Add our custom CSS.
-    $new_path = '/' . drupal_get_path('module', 'environment_indicator_loft');
+    $new_path = '/' . \Drupal::service('extension.list.module')
+        ->getPath('environment_indicator_loft');
     $libraries['drupal.environment_indicator']['css']['component'][$new_path . '/css/environment_indicator.css'] = [];
     $libraries['drupal.environment_indicator']['js'][$new_path . '/js/environment_indicator_loft.js'] = [];
     $libraries['drupal.environment_indicator']['dependencies'][] = 'core/jquery';
@@ -30,7 +32,9 @@ function environment_indicator_loft_library_info_alter(&$libraries, $extension) 
  */
 function environment_indicator_loft_theme_registry_alter(&$theme_registry) {
   if (isset($theme_registry['environment_indicator'])) {
-    $theme_registry['environment_indicator']['path'] = drupal_get_path('module', 'environment_indicator_loft') . '/templates';
+    $module_path = \Drupal::service('extension.list.module')
+      ->getPath('environment_indicator_loft');
+    $theme_registry['environment_indicator']['path'] = $module_path . '/templates';
   }
 }
 
@@ -48,9 +52,15 @@ function environment_indicator_loft_preprocess_environment_indicator(&$vars) {
 
   $active_environment = \Drupal::config('environment_indicator.indicator');
   $vars['autofade'] = intval($active_environment->get('autofade'));
-  $vars['autocookie'] = intval($active_environment->get('autocookie'));
+  $vars['throttle'] = intval($active_environment->get('throttle'));
   $vars['manual_cookie'] = intval($active_environment->get('manual_cookie')) ?: 1800;
-  $vars['branch'] = $active_environment->get('branch', NULL) ?? _environment_indicator_loft_git_branch();
+
+  $vars['override'] = $active_environment->get('override');
+
+  $vars['branch'] = $active_environment->get('branch') ?? _environment_indicator_loft_git_branch();
+  if ($vars['branch']) {
+    $vars['git_icon'] = Markup::create('<svg width="17" height="17" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg"><path d="M15.698 7.401L8.712.416a1.03 1.03 0 0 0-1.457 0l-1.45 1.45 1.84 1.84a1.223 1.223 0 0 1 1.55 1.56l1.773 1.774a1.226 1.226 0 1 1-.734.691L8.578 6.077v4.353a1.226 1.226 0 1 1-1.008-.036V6a1.226 1.226 0 0 1-.666-1.608L5.093 2.58l-4.79 4.79a1.03 1.03 0 0 0 0 1.457l6.986 6.986a1.03 1.03 0 0 0 1.457 0l6.953-6.953a1.03 1.03 0 0 0 0-1.458" fill="' . $element['#fg_color'] . '" stroke="' . $element['#bg_color'] . '" stroke-width=".5" fill-rule="evenodd"/></svg>');
+  }
 
   // Clear the configuration setting if it's expired so that config export is
   // bloated with a moot expired value.
@@ -70,7 +80,7 @@ function environment_indicator_loft_preprocess_environment_indicator(&$vars) {
   if ($should_hide) {
     $vars['attributes']['class'][] = 'is-hidden';
     $vars['autofade'] = 0;
-    $vars['autocookie'] = 0;
+    $vars['throttle'] = 0;
   }
 }
 

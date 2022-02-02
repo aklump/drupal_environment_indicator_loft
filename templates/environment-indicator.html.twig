@@ -13,18 +13,22 @@
  * @ingroup themeable
  */
 #}
+{% if override %}
+  {% set title = override %}
+  {% set branch = null %}
+  {% set description = null %}
+{% endif %}
 <div{{ attributes.addClass('environment-indicator')
-.setAttribute('data-autofade', autofade)
-.setAttribute('data-autocookie', autocookie)
-.setAttribute('data-manual_cookie', manual_cookie)
-}}>
-<a class="js-environment-indicator__hide" href="#">
+  .setAttribute('data-autofade', autofade)
+  .setAttribute('data-autocookie', autocookie)
+  .setAttribute('data-manual_cookie', manual_cookie) }}>
+  <a class="js-environment-indicator__hide" href="#">
     <span class="environment-indicator__title"{{ color }}>{{ title }}{% if
-        branch %} ~ {{ branch }}{% endif %}{% if
-        description %} ~ {{ description }}{% endif %}</span>
-</a>
-<div class="environment-indicator__n"{{ color }}></div>
-<div class="environment-indicator__e"{{ color }}></div>
-<div class="environment-indicator__s"{{ color }}></div>
-<div class="environment-indicator__w"{{ color }}></div>
+        branch %}&nbsp;&nbsp;{{ git_icon }}{{ branch }}{% endif %}{% if
+        description %}&nbsp;&nbsp;{{ description }}{% endif %}</span>
+  </a>
+  <div class="environment-indicator__n"{{ color }}></div>
+  <div class="environment-indicator__e"{{ color }}></div>
+  <div class="environment-indicator__s"{{ color }}></div>
+  <div class="environment-indicator__w"{{ color }}></div>
 </div{{ attributes }}>

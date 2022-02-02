@@ -13,6 +13,8 @@ $offset: $border_width / -2;
 }
 
 .environment-indicator__title {
+  display: flex;
+  align-items: center;
   position: fixed;
   font-size: 12px;
   font-weight: bold;
@@ -26,9 +28,11 @@ $offset: $border_width / -2;
   border-top-left-radius: 15px;
   -webkit-border-top-left-radius: 15px;
   -moz-border-radius-topleft: 15px;
+
   &:hover {
     text-decoration: none;
   }
+
 }
 
 %border_base {
