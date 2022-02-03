@@ -53,13 +53,13 @@
       }
 
       // Handle the automatic manipulation.
-      var autocookie = $indicator.data('autocookie');
+      var throttle = $indicator.data('throttle');
       var autofade = $indicator.data('autofade');
       if (autofade) {
         setTimeout(function() {
           hideForRequest(function() {
-            if (autocookie) {
-              hideForLonger(autocookie);
+            if (throttle) {
+              hideForLonger(throttle);
             }
           });
         }, autofade * 1000);
