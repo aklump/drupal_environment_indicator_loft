@@ -43,7 +43,7 @@
         });
       }
 
-      var $indicator = $('.environment-indicator');
+      var $indicator = $('#environment-indicator');
 
       // Hide a previously hidden indicator.
       var isHiddenByCookie = $.cookie('environment-indicator');
