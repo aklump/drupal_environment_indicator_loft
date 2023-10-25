@@ -1,5 +1,5 @@
 $border_width: 12px;
-$offset: $border_width / -2;
+$offset: calc($border_width / -2);
 
 .environment-indicator--loft {
   left: 0;
@@ -37,7 +37,7 @@ $offset: $border_width / -2;
 
 %border_base {
   position: fixed;
-  filter: blur($border_width / 2);
+  filter: blur(calc($border_width / 2));
   pointer-events: none;
 }
 
