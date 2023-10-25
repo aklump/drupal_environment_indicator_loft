@@ -3,7 +3,7 @@ description: 'An alternative indicator UX by In the Loft Studios.'
 package: Development
 type: module
 core_version_requirement: '^8 || ^9'
-version: 1.3.6
+version: 1.3.7
 dependencies:
   - 'drupal:environment_indicator'
 author: aklump
