@@ -1,12 +1,27 @@
 # Environment Indicator Loft UX, a Drupal Module
 
-![Environment Indicator Loft](docs/images/screenshot.png)
+![Environment Indicator Loft](images/screenshot.png)
 
 ## Summary
 
 This is an alternative UX by [In the Loft Studios](http://intheloftstudios.com) for the well known Drupal module [Environment Indicator](https://www.drupal.org/project/environment_indicator). It removes the color from the admin toolbar, and wraps the entire screen in a faint edge glow. It provides the GIT branch in the description. It allows hiding the indicator by clicking or double clicking the title/description area.
 
 **Visit <https://aklump.github.io/environment_indicator_loft> for full documentation.**
+
+## Install with Composer
+
+1. Add the following to _composer.json_.
+   ```json
+   {
+     "repositories": [
+       {
+         "type": "github",
+         "url": "https://github.com/aklump/drupal_environment_indicator_loft"
+       }
+     ]
+   }
+   ```
+1. `composer require aklump_drupal/environment_indicator_loft`
 
 ## Quick Start
 
