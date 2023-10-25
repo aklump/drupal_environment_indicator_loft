@@ -6,6 +6,21 @@ This is an alternative UX by [In the Loft Studios](http://intheloftstudios.com) 
 
 **Visit <https://aklump.github.io/environment_indicator_loft> for full documentation.**
 
+## Install with Composer
+
+1. Add the following to _composer.json_.
+   ```json
+   {
+     "repositories": [
+       {
+         "type": "github",
+         "url": "https://github.com/aklump/drupal_environment_indicator_loft"
+       }
+     ]
+   }
+   ```
+1. `composer require aklump_drupal/environment_indicator_loft`
+
 ## Quick Start
 
 1. Configure Environment Indicator as per that module's instructions.
