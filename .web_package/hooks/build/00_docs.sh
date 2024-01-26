@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-
-cd ./documentation && core/compile
+php ./knowledge/vendor/aklump/knowledge/bin/book.php bind ./knowledge

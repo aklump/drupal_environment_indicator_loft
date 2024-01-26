@@ -1,6 +1,11 @@
+<!--
+id: readme
+tags: ''
+-->
+
 # Environment Indicator Loft UX, a Drupal Module
 
-![Environment Indicator Loft](images/screenshot.png)
+![Environment Indicator Loft](../../images/screenshot.png)
 
 ## Summary
 

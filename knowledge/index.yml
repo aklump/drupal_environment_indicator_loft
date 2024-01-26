@@ -1,0 +1,9 @@
+page_order:
+  - readme
+  - installing
+  - configuring
+  - live_dev_porter
+  - configuration
+  - ideas
+  - changelog
+  - snippets
