@@ -4,9 +4,9 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="/Users/aklump/Code/Packages/d8/environment_indicator_loft/docs/dist/node_modules/bootstrap/dist/css/bootstrap.css?ver=1.3.9">
-      <link rel="stylesheet" href="/Users/aklump/Code/Packages/d8/environment_indicator_loft/docs/dist/style.css?ver=1.3.9">
-      <link rel="stylesheet" href="/Users/aklump/Code/Packages/d8/environment_indicator_loft/docs/dist/node_modules/bootstrap-icons/font/bootstrap-icons.min.css?ver=1.3.9">
+      <link rel="stylesheet" href="/Users/aklump/Code/Packages/d8/environment_indicator_loft/docs/dist/node_modules/bootstrap/dist/css/bootstrap.css?ver=1.3.10">
+      <link rel="stylesheet" href="/Users/aklump/Code/Packages/d8/environment_indicator_loft/docs/dist/style.css?ver=1.3.10">
+      <link rel="stylesheet" href="/Users/aklump/Code/Packages/d8/environment_indicator_loft/docs/dist/node_modules/bootstrap-icons/font/bootstrap-icons.min.css?ver=1.3.10">
     <title>Configuring | Environment Indicator Loft UX</title>
 </head>
 <body class="my-5">
@@ -45,14 +45,18 @@
       <h2>Via Web UI</h2>
 <ol>
 <li>Open <em>/admin/config/development/environment-indicator</em></li>
-<li>Uncheck all <em>Toolbar integration</em> boxes and <em>Save configuration</em>.</li>
-<li>Do not create an Environment Switcher.</li>
+<li>Uncheck <em>Toolbar</em></li>
+<li>Uncheck <em>Show favicon</em></li>
+<li>Click <em>Save configuration</em>.</li>
+<li>If you are logged in as user 1 you should now see the indicator.</li>
+<li>Do not create an Environment Switcher, as this module doesn't support that feature yet.</li>
+<li>Now set the permissions for other users.</li>
 </ol>
 <h2>Who Sees It?</h2>
-<p>Which users will see the indicator is determined by permissions.</p>
+<p>Which users will see the indicator is determined by permissions, therefor user ID 1 will always see it.</p>
 <ol>
 <li>Go to <em>People &gt; Permissions &gt; Environment Indicator</em></li>
-<li>Setup the correct permissions.</li>
+<li>Give <em>See all environment indicators</em> to the anonymous and authenticated roles, or as appropriate.</li>
 </ol>
 <p>See also <a href="/Users/aklump/Code/Packages/d8/environment_indicator_loft/docs/pages/general/live_dev_porter.html">Live Dev Porter</a>.</p>
 <h2>Set the Label</h2>
@@ -78,7 +82,7 @@ $config['environment_indicator.indicator']['fg_color'] = '#fff';
   <footer class="footer d-flex justify-content-center">
     <div class="flex-column justify-content-center">
                   Version:
-          <strong>1.3.9</strong>
+          <strong>1.3.10</strong>
           &bull;
                 Last Update: <strong>1/26/2024</strong>
     </div>
@@ -279,9 +283,9 @@ $config['environment_indicator.indicator']['fg_color'] = '#fff';
   </div>
 </div>
 
-  <script src="/Users/aklump/Code/Packages/d8/environment_indicator_loft/docs/dist/node_modules/bootstrap/dist/js/bootstrap.min.js?ver=1.3.9"></script>
-  <script src="/Users/aklump/Code/Packages/d8/environment_indicator_loft/docs/dist/dist/lunr.js?ver=1.3.9"></script>
-  <script src="/Users/aklump/Code/Packages/d8/environment_indicator_loft/docs/dist/knowledge.min.js?ver=1.3.9"></script>
+  <script src="/Users/aklump/Code/Packages/d8/environment_indicator_loft/docs/dist/node_modules/bootstrap/dist/js/bootstrap.min.js?ver=1.3.10"></script>
+  <script src="/Users/aklump/Code/Packages/d8/environment_indicator_loft/docs/dist/dist/lunr.js?ver=1.3.10"></script>
+  <script src="/Users/aklump/Code/Packages/d8/environment_indicator_loft/docs/dist/knowledge.min.js?ver=1.3.10"></script>
 
 </body>
 </html>
