@@ -1,5 +1,8 @@
 {
-    "name": "aklump_drupal/environment_indicator_loft",
-    "type": "drupal-custom-module",
-    "license": "GPL-2.0-or-later"
+  "name": "aklump_drupal/environment_indicator_loft",
+  "type": "drupal-custom-module",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "drupal/environment_indicator": "^4"
+  }
 }
