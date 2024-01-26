@@ -19,4 +19,4 @@ tags: ''
 2. `composer require aklump_drupal/environment_indicator_loft`
 3. `drush en environment_indicator_loft`
 
-Next step [configuring](@configuring)...
+Next step [configuring](@configuring).

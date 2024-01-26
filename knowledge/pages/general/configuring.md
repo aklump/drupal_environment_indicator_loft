@@ -22,7 +22,7 @@ See also [Live Dev Porter](@live_dev_porter).
 
 ## Set the Label
 
-See also [Snippets](@snippets).
+See also [Snippets](@snippets) for other ideas.
 
 _settings.php_
 
@@ -38,3 +38,15 @@ _settings.php_
 $config['environment_indicator.indicator']['bg_color'] = '#00339a';
 $config['environment_indicator.indicator']['fg_color'] = '#fff';
 ```
+
+## Set Double-Click-to-Hide Duration
+
+_settings.php_
+
+```php
+$config['environment_indicator.indicator']['manual_cookie'] = 1800;
+```
+
+## Handling Site Configuration Files
+
+@see [Config Fixer](@config_fixer)
