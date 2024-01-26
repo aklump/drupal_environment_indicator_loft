@@ -5,7 +5,7 @@ tags: ''
 
 # Environment Indicator Loft UX, a Drupal Module
 
-![Environment Indicator Loft](../../images/screenshot.png)
+![Environment Indicator Loft](../../images/indicator.png)
 
 ## Summary
 
@@ -28,6 +28,8 @@ See [installing](@installing) and [configuring](@configuring) to get started.
 ## Usage
 
 The border can get in the way when doing front-end developing therefor it can be hidden easily. Single clicking it will hide it until the next request, and double clicking will hide it for all new requests for a length of time.
+
+Other options for hiding can be selected at _/admin/config/development/environment-indicator_. You may pick various timeouts or you can negate an existing timeout by using the _Indicator display_ dropdown.
 
 ## Contributing
 

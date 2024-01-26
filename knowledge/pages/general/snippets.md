@@ -71,10 +71,15 @@ function my_module_preprocess_environment_indicator(&$vars) {
   }
 
   $content = '?';
-  $db_date_file = DRUPAL_ROOT . "/../.loft_deploy/prod/cached_db.txt";
+  $db_date_file = DRUPAL_ROOT . "/../.live_dev_porter/.cache/statistics.json";
   if (file_exists($db_date_file)) {
-    $date_of_database = trim(file_get_contents($db_date_file));
-    $content = date_create($date_of_database)->format('n/y');
+    $json = file_get_contents($db_date_file);
+    $stats = json_decode($json, TRUE);
+    unset($json);
+    $date_of_database = $stats['databases']['drupal']['pull']['live']['stop'] ?? NULL;
+    if ($date_of_database) {
+      $content = date_create($date_of_database)->format('M j');
+    }
   }
 
   $vars['branch'] = t(implode(' ', $message), [
