@@ -4,5 +4,5 @@
 $dispatcher->addListener(\AKlump\Knowledge\Events\GetVariables::NAME, function (\AKlump\Knowledge\Events\GetVariables $event) {
   $version_file = $event->getPathToSource() . '/../environment_indicator_loft.info.yml';
   $info = \Symfony\Component\Yaml\Yaml::parseFile($version_file);
-  $event->addVariable('version', $info['version'] ?? NULL);
+  $event->setVariable('version', $info['version'] ?? NULL);
 });
