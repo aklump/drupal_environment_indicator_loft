@@ -3,7 +3,7 @@
  * Provide click handling for the environment_indicator.
  */
 
-(function($, Drupal) {
+(function($, Drupal, cookies) {
   'use strict';
 
   Drupal.behaviors.environmentIndicatorLoft = {
@@ -25,7 +25,7 @@
         var expiry = new Date(),
           time = expiry.getTime() + duration * 1000;
         expiry.setTime(time);
-        $.cookie('Drupal.visitor.environment-indicator', 'hidden', {
+        cookies.set('Drupal.visitor.environment-indicator', 'hidden', {
           path: '/',
           expires: expiry,
         });
@@ -34,19 +34,21 @@
       /**
        * Hide indicator for the duration of this request.
        *
-       * @param callable callback
        *   A callback for when the fade is complete.
+       * @param callback
        */
       function hideForRequest(callback) {
         $indicator.fadeOut(function() {
-          if (typeof callback === 'function') callback();
+          if (typeof callback === 'function') {
+            callback();
+          }
         });
       }
 
       var $indicator = $('#environment-indicator');
 
       // Hide a previously hidden indicator.
-      var isHiddenByCookie = $.cookie('environment-indicator');
+      var isHiddenByCookie = cookies.get('environment-indicator');
       if (isHiddenByCookie && $indicator.is(':visible')) {
         $indicator.hide();
         return;
@@ -66,22 +68,30 @@
       }
 
       // Setup click handlers.
-      var cookieDuration = $indicator.data('manual_cookie');
-      $('.js-environment-indicator__hide')
-        .once()
+      const cookieDuration = $indicator.data('manual_cookie');
+      let timer = 0;
+      let prevent = false;
+
+      $(once('EnvironmentIndicatorLoft', '.js-environment-indicator__hide'))
         .dblclick(function(e) {
+          clearTimeout(timer);
+          prevent = true;
           hideForLonger(cookieDuration);
           return e.preventDefault();
         })
         .click(function(e) {
-          // Was the meta key held down? Set cookie?
-          if (e.metaKey) {
-            // TODO Handle the switcher.
-          } else {
-            hideForRequest();
-          }
+          timer = setTimeout(() => {
+            if (!prevent) {
+              if (e.metaKey) {
+                // TODO Handle the switcher.
+              } else {
+                hideForRequest();
+              }
+            }
+            prevent = false;
+          }, 200);
           return e.preventDefault();
         });
     },
   };
-})(jQuery, Drupal);
+})(jQuery, Drupal, Cookies);

@@ -12,18 +12,9 @@ function environment_indicator_loft_library_info_alter(&$libraries, $extension) 
     // Remove toolbar color changing stuff.
     unset($libraries['drupal.environment_indicator']['js']['js/environment_indicator.js']);
     unset($libraries['drupal.environment_indicator']['js']['js/color.js']);
-
     // Remove the default CSS.
     unset($libraries['drupal.environment_indicator']['css']['component']['css/environment_indicator.css']);
-
-    // Add our custom CSS.
-    $new_path = '/' . \Drupal::service('extension.list.module')
-        ->getPath('environment_indicator_loft');
-    $libraries['drupal.environment_indicator']['css']['component'][$new_path . '/css/environment_indicator.css'] = [];
-    $libraries['drupal.environment_indicator']['js'][$new_path . '/js/environment_indicator_loft.js'] = [];
-    $libraries['drupal.environment_indicator']['dependencies'][] = 'core/jquery';
-    $libraries['drupal.environment_indicator']['dependencies'][] = 'core/jquery.once';
-    $libraries['drupal.environment_indicator']['dependencies'][] = 'core/jquery.cookie';
+    $libraries['drupal.environment_indicator']['dependencies'][] = 'environment_indicator_loft/environment_indicator_loft';
   }
 }
 

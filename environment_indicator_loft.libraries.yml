@@ -1,0 +1,14 @@
+environment_indicator_loft:
+  css:
+    component:
+      dist/environment_indicator_loft.css: { }
+  js:
+    dist/environment_indicator_loft.min.js: { }
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/once
+    - core/js-cookie
+
+
+
