@@ -1,10 +1,7 @@
 chapter_order:
   - general
-  - legacy
 chapter_info:
   -
     id: general
     title: General
-  -
-    id: legacy
-    title: Legacy
+

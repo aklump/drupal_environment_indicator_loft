@@ -14,15 +14,46 @@ This is an alternative UX by [In the Loft Studios](http://intheloftstudios.com) 
 * Allows hiding the indicator by clicking or double clicking the label.
 * Is highly customizable at the code-level.
 
-See [installing](@installing) and [configuring](@configuring) to get started.
-
 ## Requirements
 
 1. [Environment Indicator Drupal module](https://www.drupal.org/project/environment_indicator)
 
+## Install with Composer
+
+1. Because this is an unpublished package, you must define it's repository in your project's _composer.json_ file. Add the following to _composer.json_ in the `repositories` array:
+
+    ```json
+    {
+        "type": "github",
+        "url": "https://github.com/aklump/drupal_environment_indicator_loft"
+    }
+    ```
+
+2. Require this package:
+
+    ```
+    composer require aklump_drupal/environment_indicator_loft:^1.3
+    ```
+
+3. Add the installed directory to _.gitignore_
+
+   ```php
+   /web/modules/custom/environment_indicator_loft/
+   ```
+
+1. Enable this module
+
 ## Usage
 
-The border can get in the way when doing front-end developing therefor it can be hidden easily. Single clicking it will hide it until the next request, and double clicking will hide it for all new requests for a length of time.
+### Hide with Single Click
+
+The border can get in the way when doing front-end developing therefor it can be hidden easily. Single clicking the info panel, will hide the indicator until the next request.
+
+### Hide for a Time with Double Click
+
+Double clicking will hide it for all new requests for a length of time.
+
+### Other Options
 
 Other options for hiding can be selected at _/admin/config/development/environment-indicator_. You may pick various timeouts or you can negate an existing timeout by using the _Indicator display_ dropdown.
 

@@ -1,6 +1,6 @@
 page_order:
   - readme
-  - my_strategy
+  - aarons_strategy
   - installing
   - configuring
   - live_dev_porter
@@ -9,3 +9,4 @@ page_order:
   - changelog
   - snippets
   - configuration
+

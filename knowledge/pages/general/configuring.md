@@ -5,6 +5,8 @@ tags: ''
 
 # Configuring
 
+Please read @see [Aaron's Strategy](@aarons_strategy) as well.
+
 ## Via Web UI
 
 1. Open _/admin/config/development/environment-indicator_
@@ -50,7 +52,3 @@ _settings.php_
 ```php
 $config['environment_indicator.indicator']['manual_cookie'] = 1800;
 ```
-
-## Handling Site Configuration Files
-
-@see [Config Fixer](@config_fixer)
