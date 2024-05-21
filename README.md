@@ -20,8 +20,10 @@ This is an alternative UX by [In the Loft Studios](http://intheloftstudios.com) 
 
 ## Install with Composer
 
-1. Because this is an unpublished package, you must define it's repository in your project's _composer.json_ file. Add the following to _composer.json_ in the `repositories` array:
-
+1. Because this is an unpublished package, you must define it's repository in
+   your project's _composer.json_ file. Add the following to _composer.json_ in
+   the `repositories` array:
+   
     ```json
     {
         "type": "github",
@@ -30,13 +32,12 @@ This is an alternative UX by [In the Loft Studios](http://intheloftstudios.com) 
     ```
 
 2. Require this package:
-
+   
     ```
     composer require aklump_drupal/environment_indicator_loft:^1.3
     ```
-
 3. Add the installed directory to _.gitignore_
-
+   
    ```php
    /web/modules/custom/environment_indicator_loft/
    ```
