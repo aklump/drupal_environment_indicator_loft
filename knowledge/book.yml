@@ -1,1 +1,13 @@
-title: Environment Indicator Loft UX
+title: 'Environment Indicator Loft UX'
+uuid: 859772b5-d1dd-4e69-881f-5453d818c2a5
+chapters:
+  -
+    id: general
+    title: General
+    pages:
+      - readme
+      - configuring
+      - aarons_strategy
+      - snippets
+      - troubleshooting
+      - changelog

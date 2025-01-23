@@ -9,7 +9,7 @@ tags: ''
 
 ## Summary
 
-This is an alternative UX by [In the Loft Studios](http://intheloftstudios.com) for the well known Drupal module [Environment Indicator](https://www.drupal.org/project/environment_indicator).
+This is an alternative UX by [In the Loft Studios](http://intheloftstudios.com) for the well-known Drupal module [Environment Indicator](https://www.drupal.org/project/environment_indicator).
 
 ## Features
 
