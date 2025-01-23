@@ -3,6 +3,7 @@ image:
   max_width: 830
   pixel_density: 1.5
 funding:
+  dot_github: ../
   channels:
     github: [ aklump ]
     buy_me_a_coffee: aklump
