@@ -4,7 +4,7 @@
 
 ## Summary
 
-This is an alternative UX by [In the Loft Studios](http://intheloftstudios.com) for the well known Drupal module [Environment Indicator](https://www.drupal.org/project/environment_indicator).
+This is an alternative UX by [In the Loft Studios](http://intheloftstudios.com) for the well-known Drupal module [Environment Indicator](https://www.drupal.org/project/environment_indicator).
 
 ## Features
 
@@ -20,27 +20,59 @@ This is an alternative UX by [In the Loft Studios](http://intheloftstudios.com) 
 
 ## Install with Composer
 
-1. Because this is an unpublished package, you must define it's repository in
-   your project's _composer.json_ file. Add the following to _composer.json_ in
-   the `repositories` array:
-   
+Because this is an unpublished, custom Drupal module, the way you install and depend on it is a little different than published, contributed modules.
+
+* Add the following to the **root-level** _composer.json_ in the `repositories` array:
     ```json
     {
-        "type": "github",
-        "url": "https://github.com/aklump/drupal_environment_indicator_loft"
+     "type": "github",
+     "url": "https://github.com/aklump/drupal_environment_indicator_loft"
     }
     ```
-
-2. Require this package:
-   
-    ```
-    composer require aklump_drupal/environment_indicator_loft:^1.3
-    ```
-3. Add the installed directory to _.gitignore_
-   
+* Add the installed directory to **root-level** _.gitignore_
+  
    ```php
    /web/modules/custom/environment_indicator_loft/
    ```
+* Proceed to either A or B, but not both.
+---
+### A. Install Standalone
+* Require _environment_indicator_loft_ at the **root-level**.
+    ```
+    composer require aklump_drupal/environment_indicator_loft:^1.3
+    ```
+---
+### B. Depend on This Module
+
+(_Replace `my_module` below with your module (or theme's) real name._)
+
+* Add the following to _my_module/composer.json_ in the `repositories` array. (_Yes, this is done both here and at the root-level._)
+    ```json
+    {
+     "type": "github",
+     "url": "https://github.com/aklump/drupal_environment_indicator_loft"
+    }
+    ```
+* From the depending module (or theme) directory run:
+    ```
+    composer require aklump_drupal/environment_indicator_loft:^1.3 --no-update
+    ```
+
+* Add the following to _my_module.info.yml_ in the `dependencies` array:
+    ```yaml
+    aklump_drupal:environment_indicator_loft
+    ```
+* Back at the **root-level** run `composer update vendor/my_module`
+
+
+---
+### Enable This Module
+
+* Re-build Drupal caches, if necessary.
+* Enable this module, e.g.,
+  ```shell
+  drush pm-install environment_indicator_loft
+  ```
 
 1. Enable this module
 
