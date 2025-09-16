@@ -71,7 +71,7 @@ Because this is an unpublished, custom Drupal module, the way you install and de
 * Re-build Drupal caches, if necessary.
 * Enable this module, e.g.,
   ```shell
-  drush pm-install environment_indicator_loft
+  drush pm-enable environment_indicator_loft
   ```
 
 1. Enable this module
