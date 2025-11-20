@@ -53,6 +53,9 @@ function environment_indicator_loft_preprocess_environment_indicator(&$vars) {
     $vars['git_icon'] = Markup::create('<svg width="17" height="17" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg"><path d="M15.698 7.401L8.712.416a1.03 1.03 0 0 0-1.457 0l-1.45 1.45 1.84 1.84a1.223 1.223 0 0 1 1.55 1.56l1.773 1.774a1.226 1.226 0 1 1-.734.691L8.578 6.077v4.353a1.226 1.226 0 1 1-1.008-.036V6a1.226 1.226 0 0 1-.666-1.608L5.093 2.58l-4.79 4.79a1.03 1.03 0 0 0 0 1.457l6.986 6.986a1.03 1.03 0 0 0 1.457 0l6.953-6.953a1.03 1.03 0 0 0 0-1.458" fill="' . $element['#fg_color'] . '" stroke="' . $element['#bg_color'] . '" stroke-width=".5" fill-rule="evenodd"/></svg>');
   }
 
+  $vars['database'] = $active_environment->get('database') ?? _environment_indicator_loft_database();
+  $vars['database_icon'] = Markup::create('<svg width="17" height="17" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 4.5c0 1.1 2.69 2 6 2s6-.9 6-2m-12 0c0-1.1 2.69-2 6-2s6 .9 6 2m-12 0v8c0 1.1 2.69 2 6 2s6-.9 6-2v-8" fill="none" stroke="' . $element['#fg_color'] . '" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+
   // Clear the configuration setting if it's expired so that config export is
   // bloated with a moot expired value.
   $should_hide = \Drupal::state()
@@ -148,3 +151,8 @@ function _environment_indicator_loft_git_branch() {
   return $git_branch;
 }
 
+function _environment_indicator_loft_database(): string {
+  $database = \Drupal::database()->getConnectionOptions();
+
+  return $database['database'];
+}
