@@ -143,7 +143,6 @@ function _environment_indicator_loft_git_branch() {
   static $git_branch;
   if ($git_branch === NULL) {
     $git_branch = exec('cd ' . \Drupal::root() . ' && git rev-parse --abbrev-ref HEAD', $git);
-    \Drupal::moduleHandler()->alter('loft_deploy_git_branch', $git_branch);
   }
 
   return $git_branch;
